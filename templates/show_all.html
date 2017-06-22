@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+	<img src = '/static/mukunter.png'>
+	</head>
+
+   <body style= "background-color:powderblue;text-align:center" >
+      <table style="font-family:Helvetica;" align="center">
+	<tr>
+	<td>
+	<a href = "{{ url_for('new') }}"> New thought!</a>
+	</td>
+	<td>
+	<a href = "{{ url_for('show_yours') }}"> Your Thoughts!</a>
+	</td>
+	<td>
+	<a href = "{{ url_for('login') }}"> Log Out</a>
+	</td>
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+
+      <p>
+      <table style="font-family:Helvetica;" align="center">
+         <thead>
+            <tr>
+               <th style="font-size:26px">The Thought Bank:</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for entry in entries %}
+                <tr>
+		<td><hr/></td>
+		</tr>
+		<tr>
+                <td> On {{ entry.time }}, {{entry.name}} was thinking.....</td>
+		</tr>
+		<tr style="font-size:26px;">
+		<td>{{ entry.thought }}</td>
+		</tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsigepnja&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+   </body>
+</html>
